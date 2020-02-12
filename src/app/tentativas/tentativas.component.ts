@@ -15,19 +15,15 @@ export class TentativasComponent implements OnInit, OnChanges {
     new Coracao(true)
   ];
 
-  constructor() {
-    console.log(this.coracoes);
-  }
+  constructor() {}
 
   //método usado no input dos dados
-  ngOnChanges(){
-    if(this.tentativas !== this.coracoes.length){
+  ngOnChanges() {
+    if (this.tentativas !== this.coracoes.length) {
       let index = this.coracoes.length - this.tentativas;
       this.coracoes[index - 1].cheio = false;
     }
   }
 
-  ngOnInit() {
-
-  }
+  ngOnInit() {}
 }
