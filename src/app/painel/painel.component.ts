@@ -14,6 +14,7 @@ export class PainelComponent implements OnInit {
   public rodada: number = 0;
   public rodadaFrase: Frase;
   public progresso: number = 0;
+  public tentativas: number = 3;
 
   constructor() {
     this.atualizaRodada();
@@ -28,16 +29,17 @@ export class PainelComponent implements OnInit {
   public verificarResposta(): void {
   
     if (this.rodadaFrase.frasePtBr != this.resposta) {
-      alert("Resposta incorreta");
+      this.tentativas --;
+      if(this.tentativas === -1) alert('Você perdeu todas as tentativas');
       return;
     }
 
     //trocar a resposta
     this.rodada++;
     this.atualizaRodada();
-    this.progresso += 100 / this.frases.length;
 
-    
+    //aumenta a barra de progresso
+    this.progresso += 100 / this.frases.length;
   }
 
   public atualizaRodada():void{
